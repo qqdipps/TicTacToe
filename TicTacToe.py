@@ -31,26 +31,26 @@ def winner(game, Xscoret, Oscoret):  #function checks for winner by calculating 
                 counter = len(game)**2
             row = row + 1
         column = column + 1
-	row = 1
-	while row < len(game):  #checks rows for wins
-			Oscoret = 0
-			Xscoret = 0
-			column = 1
-			while column < len(game):
-					for elem in game[row][column]:
-							if elem == 'X':
-									Xscoret = Xscoret + 1
-							if elem == 'O':
-									Oscoret = Oscoret + 1
-					if Xscoret == len(game) - 1:
-							print 'Player 1 wins'
-							counter = len(game)**2
-					if Oscoret == len(game) - 1:
-							print 'Player 2 wins'
-							counter = len(game)**2
-					column = column + 1
-			row = row + 1
-	row = 1  #checks diagnal for wins right handed(ie a1,b2,c3)
+    row = 1
+    while row < len(game):  #checks rows for wins
+            Oscoret = 0
+            Xscoret = 0
+            column = 1
+            while column < len(game):
+                    for elem in game[row][column]:
+                            if elem == 'X':
+                                    Xscoret = Xscoret + 1
+                            if elem == 'O':
+                                    Oscoret = Oscoret + 1
+                    if Xscoret == len(game) - 1:
+                            print 'Player 1 wins'
+                            counter = len(game)**2
+                    if Oscoret == len(game) - 1:
+                            print 'Player 2 wins'
+                            counter = len(game)**2
+                    column = column + 1
+            row = row + 1
+    row = 1  #checks diagnal for wins right handed(ie a1,b2,c3)
     Oscoret = 0
     Xscoret = 0
     while row < len(game):
@@ -100,7 +100,7 @@ def print_game(game):
 
 def marker_placement_pos(
         game):  #setting marker placement from player input of row,column
-
+    
     #placement is a local variable used for flow control. Set to 0, 'ok', or 'invalid (1,2,or 3)'.  Vairiable is also used for narrowing which type of input error is cuasing issues during build. may not be required to in final product, adding invalid print statment for player information, which could also be used to track input errors.
     placement = 0  #placement = pre-set to 0 to start while loop
 
@@ -110,6 +110,15 @@ def marker_placement_pos(
         )  #statment asking for player input for marker placement. player input is put into a list to allow split the input through indexing.
         row_temp = pos[0].upper(
         )  #sets row for marker placement and allows player input to be lowercase or upper case
+        if row_temp == "Q":
+            if player == "X":
+                looser = "Player 1"
+                winner = "Player 2" 
+            else:
+                looser = "Player 2"
+                winner = "Player 1"
+            print looser + " quit. " + winner + ", you win!"
+            exit()
         try:
             column_temp = int(pos[1])  #sets column for marker placement.
         except ValueError:  #handles exception if player passes non-numeric value
@@ -162,7 +171,7 @@ def setup(game):
     print ''
     print ''
     select(game, 1, 3, '_') 
-    print "  let's play!"
+    print "  let's play!     (use Q to quit)"    
     print_game(game)
 
 
@@ -171,6 +180,7 @@ def tictactoe(game, Xscoret, Oscoret, select, p1, p2, counter):
     counter = 0
     while counter < ((len(game) - 1)**2):
         if counter % 2 == 0:
+            global player
             player = p1
             print "!!!~~~~~Player 1~~~~~!!!"
         else:
