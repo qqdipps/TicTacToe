@@ -33,23 +33,23 @@ def winner(game, Xscoret, Oscoret):  #function checks for winner by calculating 
         column = column + 1
     row = 1
     while row < len(game):  #checks rows for wins
-            Oscoret = 0
-            Xscoret = 0
-            column = 1
-            while column < len(game):
-                    for elem in game[row][column]:
-                            if elem == 'X':
-                                    Xscoret = Xscoret + 1
-                            if elem == 'O':
-                                    Oscoret = Oscoret + 1
-                    if Xscoret == len(game) - 1:
-                            print 'Player 1 wins'
-                            counter = len(game)**2
-                    if Oscoret == len(game) - 1:
-                            print 'Player 2 wins'
-                            counter = len(game)**2
-                    column = column + 1
-            row = row + 1
+        Oscoret = 0
+        Xscoret = 0
+        column = 1
+        while column < len(game):
+            for elem in game[row][column]:
+                if elem == 'X':
+                    Xscoret = Xscoret + 1
+                if elem == 'O':
+                    Oscoret = Oscoret + 1
+            if Xscoret == len(game) - 1:
+                print 'Player 1 wins'
+                counter = len(game)**2
+            if Oscoret == len(game) - 1:
+                print 'Player 2 wins'
+                counter = len(game)**2
+            column = column + 1
+        row = row + 1
     row = 1  #checks diagnal for wins right handed(ie a1,b2,c3)
     Oscoret = 0
     Xscoret = 0
