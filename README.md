@@ -5,11 +5,11 @@ TicTacToe game 2 player in python
 ### changes:
 1. added function winning_statement to reduce repeated code in winner function - succesful
 
-2. added function (currently commented out lines 19 to 28 and moved as nested function inside function winner) index_temp_score to reduce repeated code - in progress-**not working-> see below:**
+2. added function (currently commented out lines 19 to 28 and moved as nested function inside func **winner**) **index_temp_score** to reduce repeated code - in progress-**not working-> see below:**
   ### challenges:
   * scope of variables Xscoret and Oscoret
   * not updating outside of function
-  * **Index_temp_score** func is called in _while_ loop(s) in func winner so each time function is called, 
+  * **Index_temp_score** func is called in _while_ loop(s) in func **winner** so each time function is called, 
         non-updated variable is being used
   ### result: 
    * game intiates, runs, but will not determine winner, cat's game counter still works
