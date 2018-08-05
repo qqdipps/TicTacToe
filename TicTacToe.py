@@ -4,86 +4,92 @@ game = [
     ['    ', '1', '2', '3'], [' A  ', '_', '_', '_'], [' B  ', '_', '_', '_'],
     [' C  ', '_', '_', '_']
 ]  # game board set up with 2D array using alpha/numeric coordinate system for marker placement
-Xscoret = 0  #setting temp score used to track marker counts for player one
-Oscoret = 0  #setting temp score used to track marker counts for player two
+Xscoret= [0]  #setting temp score used to track marker counts for player one
+Oscoret= [0]  #setting temp score used to track marker counts for player two
 p1 = 'X'  #player one is X
 p2 = 'O'  #player two is O
 counter = 0  #counter counts each time a marker is placed. It used to determine player turn, to end game if player wins, also will determine if game is a tie i.e cats game.
+def winning_statement(Xscoret, Oscoret, game, counter):
+    if Xscoret[0]== len(game) - 1:
+        print 'Player 1 wins'
+        counter = len(game)**2
+    if Oscoret[0]== len(game) - 1:
+        print 'Player 2 wins'
+        counter = len(game)**2
+# def index_temp_score(game,row,column,Xscoret,Oscoret,test):
+    
+#     for elem in game[row][column]:
+#         if elem == 'X':
+#             Xscoret[0]= Xscoret[0]+ 1
+#         if elem == 'O':
+#             Oscoret[0]= Oscoret[0]+ 1
+#         test += 1
+#         print Xscoret
+    #print test
+    
 
 
 def winner(game, Xscoret, Oscoret):  #function checks for winner by calculating a temp score. if temp score represents a winning solution (i.e. 3 in a row b1,b2,b3) a winner statement will be printed and counter will exceed the possible number of positions played thus ending while loop in tictactoe(game, Xscoret,Oscoret,select,p1,p2, counter)
+   
     column = 1
+    test = 0
     while column < len(game):  #checks columns for wins
-        Oscoret = 0
-        Xscoret = 0
+        Oscoret[0]= 0
+        Xscoret[0]= 0
         row = 1
         while row < len(game):
-            for elem in game[row][column]:
-                if elem == 'X':
-                    Xscoret = Xscoret + 1
-                if elem == 'O':
-                    Oscoret = Oscoret + 1
-            if Xscoret == len(game) - 1:
-                print 'Player 1 wins'
-                counter = len(game)**2
-            if Oscoret == len(game) - 1:
-                print 'Player 2 wins'
-                counter = len(game)**2
+            index_temp_score(game,row,column,Xscoret,Oscoret,test)
+            # for elem in game[row][column]:
+            #     if elem == 'X':
+            #         Xscoret[0]= Xscoret[0]+ 1
+            #     if elem == 'O':
+            #         Oscoret[0]= Oscoret[0]+ 1
+
             row = row + 1
-        column = column + 1
+            column = column + 1
+        winning_statement(Xscoret, Oscoret, game, counter)
     row = 1
     while row < len(game):  #checks rows for wins
-        Oscoret = 0
-        Xscoret = 0
+        Oscoret[0]= 0
+        Xscoret[0]= 0
         column = 1
         while column < len(game):
-            for elem in game[row][column]:
-                if elem == 'X':
-                    Xscoret = Xscoret + 1
-                if elem == 'O':
-                    Oscoret = Oscoret + 1
-            if Xscoret == len(game) - 1:
-                print 'Player 1 wins'
-                counter = len(game)**2
-            if Oscoret == len(game) - 1:
-                print 'Player 2 wins'
-                counter = len(game)**2
+            index_temp_score(game,row,column,Xscoret,Oscoret,test)
+            # for elem in game[row][column]:
+            #     if elem == 'X':
+            #         Xscoret[0]= Xscoret[0]+ 1
+            #     if elem == 'O':
+            #         Oscoret[0]= Oscoret[0]+ 1
             column = column + 1
-        row = row + 1
+            row = row + 1
+        winning_statement(Xscoret, Oscoret, game, counter)
     row = 1  #checks diagnal for wins right handed(ie a1,b2,c3)
-    Oscoret = 0
-    Xscoret = 0
+    Oscoret[0]= 0
+    Xscoret[0]= 0
     while row < len(game):
         column = row
-        for elem in game[row][column]:
-            if elem == 'X':
-                Xscoret = Xscoret + 1
-            if elem == 'O':
-                Oscoret = Oscoret + 1
-        if Xscoret == len(game) - 1:
-            print 'Player 1 wins'
-            counter = len(game)**2
-        if Oscoret == len(game) - 1:
-            print 'Player 2 wins'
-            counter = len(game)**2
+        index_temp_score(game,row,column,Xscoret,Oscoret,test)
+        # for elem in game[row][column]:
+        #     if elem == 'X':
+        #         Xscoret[0]= Xscoret[0]+ 1
+        #     if elem == 'O':
+        #         Oscoret[0]= Oscoret[0]+ 1
         row = row + 1
+    winning_statement(Xscoret, Oscoret, game, counter)
     row = 1  #checks diagnal for wins left handed(ie a3,b2,c1)
-    Oscoret = 0
-    Xscoret = 0
+    Oscoret[0]= 0
+    Xscoret[0]= 0
     while row < len(game):
-        for elem in game[row][column]:
-            if elem == 'X':
-                Xscoret = Xscoret + 1
-            if elem == 'O':
-                Oscoret = Oscoret + 1
-        if Xscoret == len(game) - 1:
-            print 'Player 1 wins'
-            counter = len(game)**2
-        if Oscoret == len(game) - 1:
-            print 'Player 2 wins'
-            counter = len(game)**2
+        index_temp_score(game,row,column,Xscoret,Oscoret,test)
+        # for elem in game[row][column]:
+        #     if elem == 'X':
+        #         Xscoret[0]= Xscoret[0]+ 1
+        #     if elem == 'O':
+        #         Oscoret[0]= Oscoret[0]+ 1
         row = row + 1
         column = column - 1
+    winning_statement(Xscoret, Oscoret, game, counter)
+    
 
 
 def select(game, row_pos, column_pos, player):
