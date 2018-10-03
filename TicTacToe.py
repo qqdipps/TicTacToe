@@ -1,4 +1,9 @@
-# # Tictactoe in python by Savannah
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+# Tictactoe in python by Savannah
+
+import sys
 
 game = [
     ['    ', '1', '2', '3'], [' A  ', '_', '_', '_'], [' B  ', '_', '_', '_'],
@@ -196,4 +201,8 @@ def tictactoe(game, Xscoret, Oscoret, select, p1, p2, counter):
         print "Cat's game. Tie"
 
 
-tictactoe(game, Xscoret, Oscoret, select, p1, p2, counter)
+
+if __name__ == '__main__':
+    sys.exit(tictactoe(game, Xscoret, Oscoret, 
+                       select, p1, p2, counter))
+
